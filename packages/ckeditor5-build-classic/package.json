@@ -1,8 +1,13 @@
 {
-  "name": "@ckeditor/ckeditor5-build-classic",
+  "name": "@blowstack/ckeditor5-full-free-build",
   "version": "23.0.0",
-  "description": "The classic editor build of CKEditor 5 – the best browser-based rich text editor.",
+  "description": "Custom build of CKEditor 5 classic build with all free plugins included",
   "keywords": [
+   " ckeditor5-full-build",
+   " ckeditor5 custom build",
+    "ckeditor5 full build",
+    "ckeditor5 free",
+    "buildckeditor5-build",
     "ckeditor5-build",
     "ckeditor",
     "ckeditor5",
@@ -10,15 +15,8 @@
     "wysiwyg",
     "rich text",
     "editor",
-    "html",
-    "contentEditable",
-    "editing",
-    "operational transformation",
-    "ot",
-    "collaboration",
-    "collaborative",
-    "real-time",
-    "framework"
+    "ckeditor custom build",
+    "full free build"
   ],
   "main": "./build/ckeditor.js",
   "files": [
@@ -26,7 +24,9 @@
   ],
   "devDependencies": {
     "@ckeditor/ckeditor5-adapter-ckfinder": "^23.0.0",
+    "@ckeditor/ckeditor5-alignment": "^23.0.0",
     "@ckeditor/ckeditor5-autoformat": "^23.0.0",
+    "@ckeditor/ckeditor5-autosave": "^23.0.0",
     "@ckeditor/ckeditor5-basic-styles": "^23.0.0",
     "@ckeditor/ckeditor5-block-quote": "^23.0.0",
     "@ckeditor/ckeditor5-ckfinder": "^23.0.0",
@@ -36,17 +36,27 @@
     "@ckeditor/ckeditor5-easy-image": "^23.0.0",
     "@ckeditor/ckeditor5-editor-classic": "^23.0.0",
     "@ckeditor/ckeditor5-essentials": "^23.0.0",
+    "@ckeditor/ckeditor5-font": "^23.0.0",
     "@ckeditor/ckeditor5-heading": "^23.0.0",
+    "@ckeditor/ckeditor5-highlight": "^23.0.0",
+    "@ckeditor/ckeditor5-horizontal-line": "^23.0.0",
     "@ckeditor/ckeditor5-image": "^23.0.0",
     "@ckeditor/ckeditor5-indent": "^23.0.0",
     "@ckeditor/ckeditor5-link": "^23.0.0",
     "@ckeditor/ckeditor5-list": "^23.0.0",
+    "@ckeditor/ckeditor5-markdown-gfm": "^23.0.0",
     "@ckeditor/ckeditor5-media-embed": "^23.0.0",
+    "@ckeditor/ckeditor5-page-break": "^23.0.0",
+    "@ckeditor/ckeditor5-pagination": "^23.0.0",
     "@ckeditor/ckeditor5-paragraph": "^23.0.0",
     "@ckeditor/ckeditor5-paste-from-office": "^23.0.0",
+    "@ckeditor/ckeditor5-remove-format": "^23.0.0",
+    "@ckeditor/ckeditor5-special-characters": "^23.0.0",
     "@ckeditor/ckeditor5-table": "^23.0.0",
-    "@ckeditor/ckeditor5-typing": "^23.0.0",
     "@ckeditor/ckeditor5-theme-lark": "^23.0.0",
+    "@ckeditor/ckeditor5-typing": "^23.0.0",
+    "@ckeditor/ckeditor5-word-count": "^23.0.0",
+    "@wiris/mathtype-ckeditor5": "^7.24.1",
     "postcss-loader": "^3.0.0",
     "raw-loader": "^4.0.1",
     "style-loader": "^1.2.1",
@@ -60,15 +70,14 @@
   },
   "author": "CKSource (http://cksource.com/)",
   "license": "GPL-2.0-or-later",
-  "homepage": "https://ckeditor.com/ckeditor-5",
-  "bugs": "https://github.com/ckeditor/ckeditor5/issues",
+  "homepage": "https://blowstack.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ckeditor/ckeditor5.git",
-    "directory": "packages/ckeditor5-build-classic"
+    "url": "https://github.com/blowstack/ckeditor5-full-free-build"
   },
   "scripts": {
     "build": "webpack --mode production",
     "preversion": "npm run build"
-  }
+  },
+  "dependencies": {}
 }

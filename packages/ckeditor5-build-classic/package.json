@@ -3,8 +3,8 @@
   "version": "23.0.0",
   "description": "Custom build of CKEditor 5 classic build with all free plugins included",
   "keywords": [
-   " ckeditor5-full-build",
-   " ckeditor5 custom build",
+    "ckeditor5-full-build",
+    "ckeditor5 custom build",
     "ckeditor5 full build",
     "ckeditor5 free",
     "buildckeditor5-build",

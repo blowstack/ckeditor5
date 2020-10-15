@@ -63,9 +63,10 @@ import TodoList from '@ckeditor/ckeditor5-list/src/todolist';
 import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline.js';
 import WordCount from '@ckeditor/ckeditor5-word-count/src/wordcount.js';
 
+class Editor extends ClassicEditor {}
 
 // Plugins to include in the build.
-ClassicEditor.builtinPlugins = [
+Editor.builtinPlugins = [
 	Alignment,
 	Autoformat,
 	Autolink,
@@ -126,7 +127,7 @@ ClassicEditor.builtinPlugins = [
 ];
 
 // Editor configuration.
-ClassicEditor.defaultConfig = {
+Editor.defaultConfig = {
 	toolbar: {
 		items: [
 			'undo',
@@ -152,14 +153,22 @@ ClassicEditor.defaultConfig = {
 			'superscript',
 			'subscript',
 			'specialCharacters',
-			'numberedList',
 			'|',
+			'alignment',
 			'indent',
 			'outdent',
+			'pageBreak',
+			'|',
+			'bulletedList',
+			'numberedList',
+			'todoList',
 			'|',
 			'imageUpload',
 			'insertTable',
 			'mediaEmbed',
+			'horizontalLine',
+			'MathType',
+			'ChemType'
 		]
 	},
 	image: {
@@ -180,3 +189,5 @@ ClassicEditor.defaultConfig = {
 	// This value must be kept in sync with the language defined in webpack.config.js.
 	language: 'en'
 };
+
+export default Editor;

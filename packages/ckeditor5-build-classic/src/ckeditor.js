@@ -38,7 +38,6 @@ import Markdown from '@ckeditor/ckeditor5-markdown-gfm/src/markdown.js';
 import MathType from '@wiris/mathtype-ckeditor5';
 import MediaEmbed from '@ckeditor/ckeditor5-media-embed/src/mediaembed.js';
 import PageBreak from '@ckeditor/ckeditor5-page-break/src/pagebreak.js';
-import Pagination from '@ckeditor/ckeditor5-pagination/src/pagination.js';
 import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph.js';
 import PasteFromOffice from '@ckeditor/ckeditor5-paste-from-office/src/pastefromoffice';
 import RemoveFormat from '@ckeditor/ckeditor5-remove-format/src/removeformat.js';
@@ -100,7 +99,6 @@ Editor.builtinPlugins = [
 	MathType,
 	MediaEmbed,
 	PageBreak,
-	Pagination,
 	Paragraph,
 	PasteFromOffice,
 	RemoveFormat,

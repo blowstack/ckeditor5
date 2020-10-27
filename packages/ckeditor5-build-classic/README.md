@@ -44,7 +44,6 @@ npm install --save @blowstack/ckeditor5-full-free-build
 * MathType,
 * MediaEmbed,
 * PageBreak,
-* Pagination,
 * Paragraph,
 * PasteFromOffice,
 * RemoveFormat,

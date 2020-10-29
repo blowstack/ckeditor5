@@ -1,6 +1,6 @@
 {
   "name": "@blowstack/ckeditor5-full-free-build",
-  "version": "23.0.0",
+  "version": "23.0.2",
   "description": "Custom build of CKEditor 5 classic build with all free plugins included",
   "keywords": [
     "ckeditor5-full-build",

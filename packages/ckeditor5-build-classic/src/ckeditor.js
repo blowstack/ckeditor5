@@ -145,7 +145,6 @@ Editor.defaultConfig = {
 			'code',
 			'codeBlock',
 			'blockQuote',
-			'bulletedList',
 			'superscript',
 			'subscript',
 			'specialCharacters',

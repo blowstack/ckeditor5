@@ -107,23 +107,33 @@ export default class Clipboard extends Plugin {
 				const model = this.editor.model;
 
 				// Convert the pasted content to a model document fragment.
-				// Conversion is contextual, but in this case we need an "all allowed" context and for that
-				// we use the $clipboardHolder item.
+				// The conversion is contextual, but in this case we need an "all allowed" context
+				// and for that we use the $clipboardHolder item.
 				const modelFragment = dataController.toModel( data.content, '$clipboardHolder' );
 
 				if ( modelFragment.childCount == 0 ) {
 					return;
 				}
 
-				// Plain text can be determined based on event flag (#7799) or auto detection (#1006). If detected
-				// preserve selection attributes on pasted items.
-				if ( data.asPlainText || isPlainTextFragment( modelFragment ) ) {
-					// Consider only formatting attributes.
-					const textAttributes = new Map( Array.from( modelDocument.selection.getAttributes() ).filter(
-						keyValuePair => editor.model.schema.getAttributeProperties( keyValuePair[ 0 ] ).isFormatting
-					) );
+				model.change( writer => {
+					const selection = model.document.selection;
 
-					model.change( writer => {
+					// Plain text can be determined based on event flag (#7799) or auto-detection (#1006). If detected,
+					// preserve selection attributes on pasted items.
+					if ( data.asPlainText || isPlainTextFragment( modelFragment, model.schema ) ) {
+						// Formatting attributes should be preserved.
+						const textAttributes = Array.from( selection.getAttributes() )
+							.filter( ( [ key ] ) => model.schema.getAttributeProperties( key ).isFormatting );
+
+						if ( !selection.isCollapsed ) {
+							model.deleteContent( selection, { doNotAutoparagraph: true } );
+						}
+
+						// Also preserve other attributes if they survived the content deletion (because they were not fully selected).
+						// For example linkHref is not a formatting attribute but it should be preserved if pasted text was in the middle
+						// of a link.
+						textAttributes.push( ...selection.getAttributes() );
+
 						const range = writer.createRangeIn( modelFragment );
 
 						for ( const item of range.getItems() ) {
@@ -131,10 +141,10 @@ export default class Clipboard extends Plugin {
 								writer.setAttributes( textAttributes, item );
 							}
 						}
-					} );
-				}
+					}
 
-				model.insertContent( modelFragment );
+					model.insertContent( modelFragment );
+				} );
 
 				evt.stop();
 			}
@@ -179,7 +189,7 @@ export default class Clipboard extends Plugin {
 /**
  * Fired with a `content` and `dataTransfer` objects. The `content` which comes from the clipboard (was pasted or dropped)
  * should be processed in order to be inserted into the editor. The `dataTransfer` object is available
- * in case the transformation functions needs access to a raw clipboard data.
+ * in case the transformation functions need access to raw clipboard data.
  *
  * It is a part of the {@glink framework/guides/deep-dive/clipboard#input-pipeline "clipboard input pipeline"}.
  *
@@ -191,7 +201,7 @@ export default class Clipboard extends Plugin {
  * It can be modified by the event listeners. Read more about the clipboard pipelines in
  * {@glink framework/guides/deep-dive/clipboard "Clipboard" deep dive}.
  * @param {module:clipboard/datatransfer~DataTransfer} data.dataTransfer Data transfer instance.
- * @param {Boolean} data.asPlainText If set to `true` content is pasted as plain text.
+ * @param {Boolean} data.asPlainText If set to `true`, the content is pasted as plain text.
  */
 
 /**
@@ -227,7 +237,7 @@ export default class Clipboard extends Plugin {
  */
 
 /**
- * Whether the event was triggered by copy or cut operation.
+ * Whether the event was triggered by a copy or cut operation.
  *
  * @member {'copy'|'cut'} module:clipboard/clipboard~ClipboardOutputEventData#method
  */
@@ -235,13 +245,18 @@ export default class Clipboard extends Plugin {
 // Returns true if specified `documentFragment` represents a plain text.
 //
 // @param {module:engine/view/documentfragment~DocumentFragment} documentFragment
+// @param {module:engine/model/schema~Schema} schema
 // @returns {Boolean}
-function isPlainTextFragment( documentFragment ) {
+function isPlainTextFragment( documentFragment, schema ) {
 	if ( documentFragment.childCount > 1 ) {
 		return false;
 	}
 
 	const child = documentFragment.getChild( 0 );
+
+	if ( schema.isObject( child ) ) {
+		return false;
+	}
 
 	return [ ...child.getAttributeKeys() ].length == 0;
 }

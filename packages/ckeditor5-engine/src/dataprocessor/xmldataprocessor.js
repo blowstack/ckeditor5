@@ -97,6 +97,20 @@ export default class XmlDataProcessor {
 	}
 
 	/**
+	 * Registers a {@link module:engine/view/matcher~MatcherPattern} for view elements whose content should be treated as raw data
+	 * and not processed during the conversion from XML to view elements.
+	 *
+	 * The raw data can be later accessed by a
+	 * {@link module:engine/view/element~Element#getCustomProperty custom property of a view element} called `"$rawContent"`.
+	 *
+	 * @param {module:engine/view/matcher~MatcherPattern} pattern Pattern matching all view elements whose content should
+	 * be treated as raw data.
+	 */
+	registerRawContentMatcher( pattern ) {
+		this._domConverter.registerRawContentMatcher( pattern );
+	}
+
+	/**
 	 * Converts an XML string to its DOM representation. Returns a document fragment containing nodes parsed from
 	 * the provided data.
 	 *

@@ -1,5 +1,5 @@
 /**
- * @license Copyright (c) 2003-2020, CKSource - Frederico Knabben. All rights reserved.
+ * @license Copyright (c) 2003-2021, CKSource - Frederico Knabben. All rights reserved.
  * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
 
@@ -7,8 +7,9 @@
  * @module image/imageresize/imageresizehandles
  */
 
-import Plugin from '@ckeditor/ckeditor5-core/src/plugin';
-import WidgetResize from '@ckeditor/ckeditor5-widget/src/widgetresize';
+import { Plugin } from 'ckeditor5/src/core';
+import { WidgetResize } from 'ckeditor5/src/widget';
+
 import ImageLoadObserver from '../image/imageloadobserver';
 
 /**
@@ -38,7 +39,7 @@ export default class ImageResizeHandles extends Plugin {
 	 * @inheritDoc
 	 */
 	init() {
-		const command = this.editor.commands.get( 'imageResize' );
+		const command = this.editor.commands.get( 'resizeImage' );
 		this.bind( 'isEnabled' ).to( command );
 
 		this._setupResizerCreator();
@@ -56,8 +57,8 @@ export default class ImageResizeHandles extends Plugin {
 		editingView.addObserver( ImageLoadObserver );
 
 		this.listenTo( editingView.document, 'imageLoaded', ( evt, domEvent ) => {
-			// The resizer must be attached only to images loaded by the `ImageInsert` or `ImageUpload` plugins.
-			if ( !domEvent.target.matches( 'figure.image.ck-widget > img' ) ) {
+			// The resizer must be attached only to images loaded by the `ImageInsert`, `ImageUpload` or `LinkImage` plugins.
+			if ( !domEvent.target.matches( 'figure.image.ck-widget > img, figure.image.ck-widget > a > img' ) ) {
 				return;
 			}
 
@@ -99,7 +100,7 @@ export default class ImageResizeHandles extends Plugin {
 					},
 
 					onCommit( newValue ) {
-						editor.execute( 'imageResize', { width: newValue } );
+						editor.execute( 'resizeImage', { width: newValue } );
 					}
 				} );
 

@@ -1,16 +1,15 @@
 /**
- * @license Copyright (c) 2003-2020, CKSource - Frederico Knabben. All rights reserved.
+ * @license Copyright (c) 2014-2021, CKSource - Frederico Knabben. All rights reserved.
  * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
-
-// The editor creator to use.
 import ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor.js';
 import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment.js';
+import AutoImage from '@ckeditor/ckeditor5-image/src/autoimage.js';
 import Autoformat from '@ckeditor/ckeditor5-autoformat/src/autoformat.js';
 import Autolink from '@ckeditor/ckeditor5-link/src/autolink.js';
-import Autosave from '@ckeditor/ckeditor5-autosave/src/autosave.js';
 import BlockQuote from '@ckeditor/ckeditor5-block-quote/src/blockquote.js';
 import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold.js';
+import CloudServices from '@ckeditor/ckeditor5-cloud-services/src/cloudservices.js';
 import Code from '@ckeditor/ckeditor5-basic-styles/src/code.js';
 import CodeBlock from '@ckeditor/ckeditor5-code-block/src/codeblock.js';
 import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials.js';
@@ -21,6 +20,7 @@ import FontSize from '@ckeditor/ckeditor5-font/src/fontsize.js';
 import Heading from '@ckeditor/ckeditor5-heading/src/heading.js';
 import Highlight from '@ckeditor/ckeditor5-highlight/src/highlight.js';
 import HorizontalLine from '@ckeditor/ckeditor5-horizontal-line/src/horizontalline.js';
+import HtmlEmbed from '@ckeditor/ckeditor5-html-embed/src/htmlembed.js';
 import Image from '@ckeditor/ckeditor5-image/src/image.js';
 import ImageCaption from '@ckeditor/ckeditor5-image/src/imagecaption.js';
 import ImageInsert from '@ckeditor/ckeditor5-image/src/imageinsert.js';
@@ -32,10 +32,12 @@ import Indent from '@ckeditor/ckeditor5-indent/src/indent.js';
 import IndentBlock from '@ckeditor/ckeditor5-indent/src/indentblock.js';
 import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic.js';
 import Link from '@ckeditor/ckeditor5-link/src/link.js';
+import LinkImage from '@ckeditor/ckeditor5-link/src/linkimage.js';
 import List from '@ckeditor/ckeditor5-list/src/list.js';
 import ListStyle from '@ckeditor/ckeditor5-list/src/liststyle.js';
 import MathType from '@wiris/mathtype-ckeditor5';
 import MediaEmbed from '@ckeditor/ckeditor5-media-embed/src/mediaembed.js';
+import MediaEmbedToolbar from '@ckeditor/ckeditor5-media-embed/src/mediaembedtoolbar.js';
 import PageBreak from '@ckeditor/ckeditor5-page-break/src/pagebreak.js';
 import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph.js';
 import PasteFromOffice from '@ckeditor/ckeditor5-paste-from-office/src/pastefromoffice';
@@ -66,11 +68,12 @@ class Editor extends ClassicEditor {}
 // Plugins to include in the build.
 Editor.builtinPlugins = [
 	Alignment,
+	AutoImage,
 	Autoformat,
 	Autolink,
-	Autosave,
 	BlockQuote,
 	Bold,
+	CloudServices,
 	Code,
 	CodeBlock,
 	Essentials,
@@ -81,6 +84,7 @@ Editor.builtinPlugins = [
 	Heading,
 	Highlight,
 	HorizontalLine,
+	HtmlEmbed,
 	Image,
 	ImageCaption,
 	ImageInsert,
@@ -92,10 +96,12 @@ Editor.builtinPlugins = [
 	IndentBlock,
 	Italic,
 	Link,
+	LinkImage,
 	List,
 	ListStyle,
 	MathType,
 	MediaEmbed,
+	MediaEmbedToolbar,
 	PageBreak,
 	Paragraph,
 	PasteFromOffice,
@@ -119,8 +125,9 @@ Editor.builtinPlugins = [
 	Title,
 	TodoList,
 	Underline,
-	WordCount,
+	WordCount
 ];
+
 
 // Editor configuration.
 Editor.defaultConfig = {

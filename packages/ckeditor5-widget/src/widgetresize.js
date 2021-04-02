@@ -1,5 +1,5 @@
 /**
- * @license Copyright (c) 2003-2020, CKSource - Frederico Knabben. All rights reserved.
+ * @license Copyright (c) 2003-2021, CKSource - Frederico Knabben. All rights reserved.
  * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
 
@@ -258,7 +258,7 @@ mix( WidgetResize, ObservableMixin );
  *
  * It receives a `Number` (`newValue`) as a parameter.
  *
- * For example, {@link module:image/imageresize~ImageResize} uses it to execute the image resize command
+ * For example, {@link module:image/imageresize~ImageResize} uses it to execute the resize image command
  * which puts the new value into the model.
  *
  * ```js
@@ -268,7 +268,7 @@ mix( WidgetResize, ObservableMixin );
  *	viewElement: widget,
  *
  *	onCommit( newValue ) {
- *		editor.execute( 'imageResize', { width: newValue } );
+ *		editor.execute( 'resizeImage', { width: newValue } );
  *	}
  * };
  * ```

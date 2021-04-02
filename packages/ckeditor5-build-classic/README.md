@@ -12,16 +12,16 @@ npm install --save @blowstack/ckeditor5-full-free-build
 
 ## Plugins included
 * Alignment,
+* AutoImage,
 * Autoformat,
 * Autolink,
-* Autosave,
 * BlockQuote,
 * Bold,
+* CloudServices,
 * Code,
 * CodeBlock,
 * Essentials,
 * FontBackgroundColor,
-* FontColor,
 * FontColor,
 * FontFamily,
 * FontSize,
@@ -39,10 +39,12 @@ npm install --save @blowstack/ckeditor5-full-free-build
 * IndentBlock,
 * Italic,
 * Link,
+* LinkImage,
 * List,
 * ListStyle,
 * MathType,
 * MediaEmbed,
+* MediaEmbedToolbar,
 * PageBreak,
 * Paragraph,
 * PasteFromOffice,
@@ -66,7 +68,7 @@ npm install --save @blowstack/ckeditor5-full-free-build
 * Title,
 * TodoList,
 * Underline,
-* WordCount,
+* WordCount
 
 ## Documentation
 

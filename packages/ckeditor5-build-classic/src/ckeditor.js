@@ -167,7 +167,6 @@ Editor.defaultConfig = {
 			'|',
 			'imageUpload',
 			'insertTable',
-			'mediaEmbed',
 			'horizontalLine',
 			'MathType',
 			'ChemType'
